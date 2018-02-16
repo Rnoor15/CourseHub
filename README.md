@@ -1,8 +1,8 @@
 # CapstoneProject
 
-The following layout helps define your product: In order to ______ (vision)
+The following layout helps define your product: In order to ___have a forum for homework help___ (vision)
 
-our product will solve ___Hunter Students___ (target audience)
+our product will solve ___Hunter students___ (target audience)
 
 problem of ___not having a way for them to ask their peers for help on assignments___ (user problem)
 

@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Login and Registration</title>
+<style>
+	body{
+		background-image: url("classroom-1.jpg");
+		background-repeat: repeat-x;
+		background-size: cover;
+		background-position: center;	
+	}
+	.Login-page{
+		margin: 0;
+		position: absolute;
+		top: 48%;
+		left: 50%;
+		transform: translate(-25%, -25%);
+	}
+	.avatar{
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		position: absolute;
+		top: -50px;
+		left: calc(50% - 50px);
+	}
+	.Login-page p{
+		margin: 0;
+		padding 0;
+		font-weight: bold;
+	}
+	.Login-page input{
+		width: 100%;
+		margin-bottom: 20px;
+	}
+	.Login-page input[type="email"]
+	{
+		border: none;
+		border-bottom: 1px solid #fff;
+		background: transparent;
+		outline: none;
+		height: 40px;
+		color: #fff;
+		font-size: 15px;
+	}
+	.Login-page input[type="password"]
+	{
+		border: none;
+		border-bottom: 1px solid #fff;
+		background: transparent;
+		outline: none;
+		height: 40px;
+		color: #fff;
+		font-size: 15px;
+	}
+	.form{
+		width: 320px;
+		height: 360px;
+		background: #141416;
+		color: #FFFFFF;
+		top: 50%;
+		left: 50%;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		box-sizing: border-box;
+ 		border: 2px solid green;
+		padding: 70px 30px;
+	}
+	.form input{
+		font-family: "Roberto", sans-serif;
+		outline: 1;
+		background: #f2f2f2;
+		width: 100%;
+		border: 0;
+		margin: 0 0 15px;
+		padding: 15px;
+		box-sizing: border-box;
+		font-size: 14px;
+	}
+	.form button[type="Login"]{
+		font-family: "Roberto", sans-serif;
+		text-transform: uppercase;
+		outline: 0;
+		background: #1D7A0F;
+		width: 100%;
+		border: 0;
+		padding: 15px;
+		color: #FFFFFF;
+		font-size: 14px;
+		cursor: pointer;
+		border-radius: 20px;
+	}
+	.form button:hover{
+		background: #21B00C;
+		color: #FFFFFF;
+	}
+	.Login-page a{
+		text-decoration: none;
+		font-size: 15px;
+		line-height: 20px;
+		color: white;
+		cursor: pointer;
+	}
+	.form a:hover{
+		color: green;
+	}
+	.info{
+		width: 1250px;
+		height: 135px;
+		font-family: "Arial", sans-serif;
+		background: #141416;
+		color: #21B00C;
+		top: 122%;
+		left: 50%;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		box-sizing: border-box;
+ 		border: 2px solid green;
+		padding: 5px;
+	}
+	
+</style>
+</head>
+<body>
+	<div class = "Login-page">
+	<div class = "form">
+	<img src="icon.png" class="avatar">
+		<form class = "Registration-form">
+			<p>Email</p>
+			<input type="email" placeholder="Enter email"/>
+			<p>Password</p>
+			<input type="password" placeholder="Enter password"/>
+			<button type="Login">Login</button>
+			<br>
+			<br>
+			<br>
+			<a href="file:///C:/Users/Richard/Desktop/passwordrecovery.html">&nbsp <u>Forgot password?</u></a>   
+			<a href="#">&nbsp&nbsp&nbsp&nbsp&nbsp <u>Create an account<u/></a><br>
+		</form>
+	<div class = "info">
+		<center><h1><i>Ask & Answer</i></h1><center>
+		<center><p><font color="FFFFFF"><font size="3.5">CourseHub is a forum-based platform that allows Hunter College students to interact with their classmates. Join your course's "classroom" where you can connect with fellow classmates to post and answer questions. Never feel lost again! Community driven, by Hunter students, for Hunter students.</font></font></p></center>
+	</div>
+		
+</body>
+</html>

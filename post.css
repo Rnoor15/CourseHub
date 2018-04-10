@@ -1,0 +1,40 @@
+body {
+	margin: 0;
+	height: 100%;
+	background: #f5f5f5;
+}
+
+.page {
+	word-wrap: break-word;
+	margin-left: 25px;
+	width: 65%;
+}
+.post {
+	background: white;
+	padding: 30px 30px;
+}
+
+h4 {
+	color: gray;
+}
+
+.comment {
+	padding: 15px 15px;
+	background: white;
+	/*border: solid 1px green;*/
+}
+
+.form-control {
+	width: 50%;
+}
+
+.comment-box {
+	background: white;
+	padding: 15px 15px;
+	margin-bottom: 50px;
+}
+
+
+
+
+

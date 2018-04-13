@@ -1,0 +1,144 @@
+html, body { 
+	height: 100%; 
+ }
+.top{
+	height: 150px;
+	width: 1250px;
+	margin: auto;
+	border-bottom: 1px solid #ccc;
+}
+.logo{
+	width:400px;
+	height: 150px;
+}
+.logoimg{
+	float: left;
+	margin-top: 20px;
+	margin-left: 50px;
+}
+.nav{
+	position: absolute;
+	height: 120px;
+	width: 600px;
+	left: 580px;
+	top: 27px;
+}
+.nav-items{
+	float: left;
+	position: inherit;
+	width: 590px;
+	left: 190px;
+	list-style: none;
+	text-align: center;
+	top: 32px;
+	height: 80px;
+}
+.nav-items li {
+    float:left;
+	display: table-cell; 
+    position: relative; 
+    text-align: center;
+	line-height: 80px;
+	font-size: 20px;
+	padding: 0 30px;
+	overflow: hidden;
+}
+.nav-items li a {
+ 	 width: 100%;
+	 color: #616161;
+	 position: relative;
+	 text-decoration: none;
+	 display: inline ;
+  }
+.nav-items li a:link,.nav-items li a:visited{
+    display: block;
+    width: 100%;
+    font-weight: light;
+    background: transparent;
+    text-align: center;
+	color: #3B3939;
+  }
+.nav-items li a:hover,.nav-items li a:active   { 
+  	padding-bottom:2px;
+    background: transparent;
+    border-bottom: 3px solid #5BF600; 
+    color: #5BF600;  
+}
+.container  {
+	width: 1250px;
+	height: 1000px;
+	margin-top: 10px;
+	background:#41B750;
+ }
+.box{
+ 	position: relative;
+	top: 100px;
+	width: 1050px;
+	height: 800px;
+	background:#FFFFFF;
+ 	border-bottom: double;
+	border-bottom-color: #30E0E0;
+	margin-bottom: 100px;
+ }
+.courses{
+ 	float: left;
+	position: absolute;
+	margin-left: -2px;
+	width: 900px;
+	height: 700px;
+	background-image: url(../image/bg.png);
+	top: 60px;
+ }
+.title strong{
+	display: block;
+	position: absolute;
+	float: center;
+	font-size: 34px;
+	font-family: Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", "serif";
+	left: 35px;
+	top: 2px;
+	width: 260px;
+	border-bottom:solid;
+	border-bottom-color: #5BF600;
+}
+.course-inner{
+	position: absolute;
+	align:center;
+	top: 170px;
+	width: 700px;
+	height: 295px;
+	overflow-x: auto; 
+	overflow-y: scroll; 
+}
+#course-table{
+	text-align: center;
+ 	 width: 700px;
+ 	
+	
+}
+#course-table td{
+ 	padding: 16px;
+}
+#course-table a{
+	text-decoration: none;
+		font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif";
+		color: #010007
+}
+#course-table a:hover{
+	color: aliceblue;
+}
+
+
+ #search {
+ 	 border-radius: 20px;
+	padding-left: 10px;
+	outline:none;
+	font-size: 20px;
+	transition: .2s linear;
+	height: 28px;
+	width: 120px;
+	border:2px solid #40B850;
+}
+#search:focus{
+	width: 180px;
+}

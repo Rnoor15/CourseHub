@@ -36,7 +36,13 @@ User's Page
       <div class="container">
         <div class="starter-template">
           <h1>Your List Of Courses</h1>
-          <p class="lead"></p>
+          <p class="lead">
+            {% for course in courses %}
+              <a href="{{ course.link }}">{{ course.title }}</a>a>
+            {% endfor %}
+
+          </p>
+            }
         </div>
       </div>
 

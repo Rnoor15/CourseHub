@@ -1,0 +1,58 @@
+body {
+  padding-top: 50px;
+}
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+div.courseSB {
+  width: 300px;
+  height: 350px;
+  overflow: auto;
+  position:absolute;
+  top: 25%;
+  left: 10%;  
+  border-style: solid;
+  border-color: black;
+}
+
+button[type="Add Course"] {
+  text-transform: uppercase;
+  outline: 0;
+  background: #77dd77;
+  width: 26.75%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 20px;
+  position:absolute;
+  top: 75%;
+  left: 10%;
+}
+
+button[type="Add Course"]:hover {
+    background: #ffd1dc;
+    color: #000;
+  }

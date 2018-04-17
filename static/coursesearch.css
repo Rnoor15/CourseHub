@@ -1,0 +1,306 @@
+body {
+  padding-top: 50px;
+}
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+
+.main {
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+.avatar{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	position: absolute;
+	left: 46%;
+	top: 37%;
+}
+.avatar2{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	position: absolute;
+	right: 0%;
+	top: 0%;	
+}
+
+.form{
+	width: 800px;
+	height: 420px;
+	background: white;
+	color: #fff;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	padding: 70px 30px;
+	border-style: solid;
+	border-color: #77dd77;
+}
+
+.form button[type="Add Course"]{
+	font-family: "Roberto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #77dd77;
+	width: 20%;
+	border: 0;
+	padding: 15px;
+	color: #FFFFFF;
+	font-size: 14px;
+	cursor: pointer;
+	border-radius: 20px;
+	position:absolute;
+	top: 70%;
+	left: 63%;
+}
+.form button[type="Add Course"]:hover{
+	background: #ffd1dc;
+	color: #000;
+}
+
+.form a[type="Subject"] {
+	font-size: 20px;
+	line-height: 20px;
+	color: black;
+	position:absolute;
+	left: 20%;	
+}
+div.coursesearchSB {
+	width: 250px;
+	height: 165px;
+	overflow: auto;
+	position:absolute;
+	top: 25%;
+	left: 10%;	
+	border-style: solid;
+	border-color: black;
+}
+div.subcourseSB {
+	width: 250px;
+	height: 165px;
+	overflow: auto;
+	position:absolute;
+	top: 25%;
+	left: 57%;	
+	border-style: solid;
+	border-color: black;
+}
+ul[id="AllSubjects"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+ul[id="AllSubjects"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="AllSubjects"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+ul[id="AllSubjects"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+ul li a:focus {
+}
+
+ul[id="BioCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="BioCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="BioCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="BioCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+
+ul[id="ChemCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="ChemCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="ChemCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="ChemCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+
+ul[id="CSCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="CSCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="CSCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="CSCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+
+ul[id="EconCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="EconCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="EconCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="EconCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+
+ul[id="MathCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="MathCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="MathCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="MathCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+
+ul[id="SocCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="SocCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="SocCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="SocCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}
+
+ul[id="StatCourses"] {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+ul[id="StatCourses"] li {
+	width: 250px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+}
+ul[id="StatCourses"] li a {
+	width: 150%;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+	left: 20%;
+}
+
+ul[id="StatCourses"] li a:hover {
+	background-color: #77dd77;
+	cursor: pointer;
+}

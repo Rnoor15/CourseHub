@@ -1,0 +1,96 @@
+{% from "_render_field.html" import render_field %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Register</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <style>
+
+  body, html {
+    font-family: "Mina", sans-serif;
+	  height: 100%;
+	  margin: 0;
+    padding: 0;
+  }
+
+  input[type=text] {
+    width: 100%;
+  	margin-bottom: 15px;
+  	font-size: 15px;
+  	height: 40px;
+  	outline: none;
+  	padding: 10px;
+  }
+
+  textarea {
+    height: 200px;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-color: #e0e0e0;
+  }
+
+  .post {
+  	margin: 0;
+  	width: 600px;
+  	top: 50%;
+  	left: 50%;
+  	position: absolute;
+  	transform: translate(-50%, -50%);
+  }
+
+  .head {
+    text-align: center;
+  }
+
+  button[type="submit"] {
+  margin-left: 25%;
+	width: 50%;
+	padding: 10px;
+	font-size: 14px;
+	border-radius: 20px;
+	cursor: pointer;
+	border: 0;
+}
+
+  button[type="submit"]:hover {
+	   background: DodgerBlue;
+  }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+ <a class="navbar-brand" href="#">CourseHub</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="post">
+  <h3 class="head">Create a Post</h3><br>
+  <div class=container>
+  <form action="{{ url_for('post') }}" method="POST">
+  	{{ form.csrf_token }}
+
+    {{ render_field(form.title, placeholder = form.title.label.text) }}
+
+    {{ render_field(form.body, placeholder = form.body.label.text) }}
+
+    <button type="submit" class="btn btn-success btn-block">Submit Post</button><br>
+  </form>
+</div>
+</div>
+
+</body>
+</html>

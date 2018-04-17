@@ -1,0 +1,119 @@
+{% from "_render_field.html" import render_field %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Register</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <style>
+
+  body, html {
+    font-family: "Mina", sans-serif;
+	  height: 100%;
+	  margin: 0;
+    padding: 0;
+  }
+
+  input[type=text], input[type=password] {
+    width: 100%;
+  	background: white;
+  	margin-bottom: 15px;
+  	font-size: 15px;
+  	height: 40px;
+  	outline: none;
+  	padding: 10px;
+  }
+
+  .registration {
+  	margin: 0;
+  	width: 400px;
+  	top: 50%;
+  	left: 50%;
+  	position: absolute;
+  	transform: translate(-50%, -50%);
+  }
+
+  button[type="submit"] {
+  	width: 100%;
+  	padding: 10px;
+  	font-size: 14px;
+  	border-radius: 20px;
+  	cursor: pointer;
+  	border: 0;
+  }
+
+  button[type="submit"]:hover {
+	   background: DodgerBlue;
+   }
+
+   .sign-in {
+  	text-align: center;
+  	font-size: 15px;
+  }
+
+  h3 {
+  	font-weight: bold;
+  	text-align: left;
+  	text-indent: 15px;
+  }
+
+  p {
+  	text-align: left;
+  	text-indent: 15px;
+  }
+
+  .navbar {
+  	padding: 5px 10px;
+  }
+
+  .nav-link {
+  	padding: 0px;
+  	font-weight: bold;
+  	color: white;
+  }
+
+</style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+ <a class="navbar-brand" href="#">CourseHub</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Log in</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div class="registration">
+  <h3 class="head">Join CourseHub</h3>
+  <p>Please register with a valid Hunter email</p>
+  <div class=container>
+  <form action="{{ url_for('register') }}" method="POST">
+  	{{ form.csrf_token }}
+
+    {{ render_field(form.firstname, placeholder = form.firstname.label.text) }}
+
+    {{ render_field(form.lastname, placeholder = form.lastname.label.text) }}
+
+    {{ render_field(form.email, placeholder = form.email.label.text) }}
+
+    {{ render_field(form.password, placeholder = form.password.label.text) }}
+
+    {{ render_field(form.confirm, placeholder = form.confirm.label.text) }}
+
+    <button type="submit" class="btn btn-success btn-block">REGISTER</button><br>
+    <p class="sign-in">Have an account?&nbsp;<a href="LoginReg.html">Sign in</a></p>
+  </form>
+</div>
+</div>
+
+</body>
+</html>

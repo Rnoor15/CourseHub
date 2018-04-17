@@ -1,4 +1,4 @@
-class Post:
+class Row:
     comments = 0
     title = ""
     author = ""

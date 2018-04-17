@@ -1,4 +1,4 @@
-from .post import Post
+from .row import Row
 
 class Classroom:
     name=""

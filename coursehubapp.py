@@ -10,7 +10,7 @@ from time import sleep
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
+app.config['SECRET_KEY'] = 'Coursehubssecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/davidliao/Desktop/Capstone/coursehubmembers.db'
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -55,7 +55,7 @@ def login():
                 return redirect(url_for('userspage'))
 
         flash("Invalid username or password!")
-        
+
         return render_template('login.html', form=form)
 
     return render_template('login.html', form=form)

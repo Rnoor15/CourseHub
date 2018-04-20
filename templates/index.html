@@ -1,42 +1,73 @@
-{% extends "bootstrap/base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CourseHub</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-{% block title %}
-Home
-{% endblock %}
+  <style>
 
-{% block styles %}
-{{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='index.css')}}">
-{% endblock %}
+  body, html {
+    font-family: "Mina", sans-serif;
+	  height: 100%;
+	  margin: 0;
+    padding: 0;
+  }
 
-{% block content %}
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">CourseHub</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="{{ url_for('login') }}">Login</a></li>
-            <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+  h1 {
+    font-size: 100px;
+    margin-bottom: 100px;
+  }
 
-    <div class="container">
+  .container {
+    padding-top: 20px;
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
 
-      <div class="starter-template">
-        <h1>Welcome To CourseHub</h1>
-        <p class="lead"></p>
-      </div>
 
-    </div><!-- /.container -->
-{% endblock %}
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+ <a class="navbar-brand" href="#">CourseHub</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('login') }}">Sign in</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('signup') }}">Register</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+<h1>Welcome to CourseHub</h1>
+  <div class="row">
+  <div class="col-sm">
+    <p>Stuggling with your classes? Need help with something related to your class? Need to communicate with your classmates about something? Don't worry, CourseHub has you covered!</p>
+  </div>
+  <div class="col-sm">
+    <p>Select a specific subject and find your class! Be able to post questions on a forum where anyone in the class can help out. CourseHub encourages students to discuss with each other and help one another. </p>
+  </div>
+  <div class="col-sm"> 
+    <p>If you don't have an account, register now with your Hunter college email! Don't fall behind in your class!</p>
+  </div> 
+</div>
+
+</div>
+
+</body>
+</html>

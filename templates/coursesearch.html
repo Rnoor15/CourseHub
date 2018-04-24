@@ -86,7 +86,7 @@ Dashboard
 					<li tabindex="{{ url_for('login') }}"><a>CSCI 49900 Advanced Applications: Capstone</a></li>
 				</ul>
 				<ul id="EconCourses" style="display: none">
-					<li tabindex="1"><a>ECO 100 Introduction to Economics</a></li>	
+					<li tabindex="1"><a>ECO 100 Introduction to Economics</a></li>
 					<li tabindex="2"><a>ECO 200 Principles of Microeconomics</a></li>
 					<li tabindex="3"><a>ECO 201 Principles of Macroeconomics</a></li>
 					<li tabindex="4"><a>ECO 300 Intermediate Microeconomics</a></li>
@@ -96,7 +96,7 @@ Dashboard
 					<li tabindex="8"><a>ECO 499 Honors Project</a></li>
 				</ul>
 				<ul id="MathCourses" style="display: none">
-					<li tabindex="1"><a>MATH 10100 Algebra for College Students</a></li>				
+					<li tabindex="1"><a>MATH 10100 Algebra for College Students</a></li>
 					<li tabindex="2"><a>MATH 12500 Precalculus</a></li>
 					<li tabindex="3"><a>MATH 15000 Calculus with Analytic Geometry 1</a></li>
 					<li tabindex="4"><a>MATH 15500 Calculus with Analytic Geometry 2</a></li>
@@ -106,7 +106,7 @@ Dashboard
 					<li tabindex="8"><a>MATH 49000 Honors Seminar</a></li>
 				</ul>
 				<ul id="SocCourses" style="display: none">
-					<li tabindex="1"><a>SOC 101 Introduction to Sociology</a></li>	
+					<li tabindex="1"><a>SOC 101 Introduction to Sociology</a></li>
 					<li tabindex="2"><a>SOC 201 The Family</a></li>
 					<li tabindex="3"><a>SOC 203 Education</a></li>
 					<li tabindex="4"><a>SOC 219 American Society</a></li>
@@ -116,7 +116,7 @@ Dashboard
 					<li tabindex="8"><a>SOC 471-472 Honors</a></li>
 				</ul>
 				<ul id="StatCourses" style="display: none">
-					<li tabindex="1"><a>STAT 11300 Elementary Probability and Statistics</a></li>				
+					<li tabindex="1"><a>STAT 11300 Elementary Probability and Statistics</a></li>
 					<li tabindex="2"><a>STAT 21300 Introduction to Applied Statistics</a></li>
 					<li tabindex="3"><a>STAT 22000 Statistical Analysis in Forensics</a></li>
 					<li tabindex="4"><a>STAT 31100 Probability Theory</a></li>
@@ -124,8 +124,8 @@ Dashboard
 					<li tabindex="6"><a>STAT 35100 Advanced Biometrics</a></li>
 					<li tabindex="7"><a>STAT 39500 Advanced Topics in Statistics</a></li>
 					<li tabindex="8"><a>STAT 48600 Elements of Visualization</a></li>
-				</ul>	
-				</div>			
+				</ul>
+				</div>
 				<button type="Add Course">Add Course</button>
 			</form>
 		</div>
@@ -135,11 +135,11 @@ Dashboard
 	<script>
 	    function displaySubcourse(id) {
 	    	if (id == "Bio"){
-		    	if (document.getElementById("BioCourses").style.display == "block") 
+		    	if (document.getElementById("BioCourses").style.display == "block")
 		    	{
 		    		document.getElementById('BioCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('BioCourses').style.display = 'block';
 		    	}
@@ -150,13 +150,12 @@ Dashboard
 		    		document.getElementById('SocCourses').style.display = 'none';
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    }
-
 		    else if (id == "Chem"){
-		    	if (document.getElementById("ChemCourses").style.display == "block") 
+		    	if (document.getElementById("ChemCourses").style.display == "block")
 		    	{
 		    		document.getElementById('ChemCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('ChemCourses').style.display = 'block';
 		    	}
@@ -168,11 +167,11 @@ Dashboard
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    }
 		    else if (id == "CS"){
-		    	if (document.getElementById("CSCourses").style.display == "block") 
+		    	if (document.getElementById("CSCourses").style.display == "block")
 		    	{
 		    		document.getElementById('CSCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('CSCourses').style.display = 'block';
 		    	}
@@ -184,11 +183,11 @@ Dashboard
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    }
 		    else if (id == "Econ"){
-		    	if (document.getElementById("EconCourses").style.display == "block") 
+		    	if (document.getElementById("EconCourses").style.display == "block")
 		    	{
 		    		document.getElementById('EconCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('EconCourses').style.display = 'block';
 		    	}
@@ -200,11 +199,11 @@ Dashboard
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    }
 		    else if (id == "Math"){
-		    	if (document.getElementById("MathCourses").style.display == "block") 
+		    	if (document.getElementById("MathCourses").style.display == "block")
 		    	{
 		    		document.getElementById('MathCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('MathCourses').style.display = 'block';
 		    	}
@@ -216,11 +215,11 @@ Dashboard
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    }
 		    else if (id == "Soc"){
-		    	if (document.getElementById("SocCourses").style.display == "block") 
+		    	if (document.getElementById("SocCourses").style.display == "block")
 		    	{
 		    		document.getElementById('SocCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('SocCourses').style.display = 'block';
 		    	}
@@ -232,11 +231,11 @@ Dashboard
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    }
 		    else if (id == "Stat"){
-		    	if (document.getElementById("StatCourses").style.display == "block") 
+		    	if (document.getElementById("StatCourses").style.display == "block")
 		    	{
 		    		document.getElementById('StatCourses').style.display = 'none';
 		    	}
-		    	else 
+		    	else
 		    	{
 		    		document.getElementById('StatCourses').style.display = 'block';
 		    	}

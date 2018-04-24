@@ -1,0 +1,13 @@
+{% extends 'usercenter.html' %}
+
+{% block user %}
+    <ul>
+    {% for foo in user.comment %}
+                <li class="list-group-item" >
+
+                    <span class="badge">{{ foo.comment_time }}</span>
+                    <p class="abstract">{{ foo.detail }}</p>
+                </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

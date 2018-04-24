@@ -1,0 +1,160 @@
+{% from "_render_field.html" import render_field %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course</title>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+  <style>
+
+  body, html {
+      font-family: "Mina", sans-serif;
+	  height: 100%;
+	  margin: 0;
+      padding: 0;
+      background: #e0e0e0;
+  }
+
+
+  .search{
+       margin-left: auto;
+       margin-right: auto;
+       margin-top: 50px;
+       width:680px;
+
+  }
+
+  .postlist{
+      margin-top:50px;
+      top:30px;
+      margin-left: auto;
+      margin-right: auto;
+      height: 500px;
+      width:80%;
+      background: white;
+      border-radius: 20px;
+      overflow:scroll;
+
+
+  }
+  .searchbox{
+      width:500px;
+      height: 40px;
+      outline:none;
+      background: #e0e0e0;
+
+
+
+
+  }
+  .searchbtn{
+      height: 40px;
+      outline:none;
+      width:70px;
+      background-color: #0f88eb;
+      color: white;
+      border-radius: 8px;
+
+  }
+  .postbtn{
+       height: 40px;
+       outline:none;
+       width:70px;
+       background-color: #38a356;
+       border-radius: 8px;
+       color: white;
+
+  }
+
+
+    input[type=submit]{
+        outline:none;
+    }
+  .post_{
+      width:90%;
+      margin-left: auto;
+      margin-right: auto;
+      overflow:hidden;
+      border-bottom: solid;
+      border-bottom-color: #d6dae0;
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+
+      padding:10px 0;
+      height:80px;
+  }
+
+  .title a {
+      color: #0f88eb;
+      font-size:20px;
+      font-weight:800;
+      text-decoration: none;
+
+  }
+  .title a:hover{
+            font-size:22px;
+
+  }
+
+  .posted{
+      color:grey;
+  }
+  .info {
+      text-align: right;
+  }
+
+  .info span {
+      margin-right: 10px;
+  }
+
+ </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-success navbar-dark">
+ <a class="navbar-brand" href="#">CourseHub</a>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('logout') }}">Sign out</a>
+    </li>
+  </ul>
+</nav>
+<div class="search">
+    <input type="text" class="searchbox" placeholder="search...">
+              <button type="submit" class="searchbtn">Search</button>
+
+                 <a href="{{ url_for('post') }}"> <button type="button" class="postbtn"> Post </button>  </a>
+
+
+
+    </div>
+
+     <ul class="postlist">
+        {% for posts in post %}
+        <li class="post_">
+        <div class ="post_title">
+                    <p class="title"><a href="{{url_for('detail',post_id = posts.id)}}">{{ posts.title }}</a></p>
+        </div>
+                  <!--  <p class="description">{{ posts.description }}</p> -->
+
+                    <div class="info">
+                        <span class="posted">posted by  </span>
+                        <span class="username">{{posts.user.username}}</span>
+                        <span class="posttime">{{posts.post_time}}</span>
+                    </div>
+
+
+        </li>
+        {% endfor %}
+   </ul>
+
+
+
+</body>
+</html>

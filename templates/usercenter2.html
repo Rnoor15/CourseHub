@@ -1,0 +1,20 @@
+{% extends 'usercenter.html' %}
+
+{% block user %}
+              <ul class="note-list" style="padding-left: 0px;">
+                {% for post in user.post %}
+                    <li class="list-group-item">
+                        <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+                        <a href="{{ url_for('detail',post_id=p.id) }}">{{ p.title }}</a>
+                        <span class="badge">{{ p.post_time }}</span>
+                        <br>
+                        <p>{{ p.detail }}</p>
+
+                    </li>
+                {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+
+{% endblock %}

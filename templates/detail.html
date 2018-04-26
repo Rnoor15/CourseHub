@@ -1,4 +1,4 @@
-{% import "bootstrap/wtf.html" as wtf %}
+﻿{% import "bootstrap/wtf.html" as wtf %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +57,7 @@ h4{
     <span>  {{ post.post_time }}</span></p>
     <p class="description">{{ post.description}}</p>
     <hr>
-    <h4>Comment：{{ post.comment.count() }}</h4>
+    <h4>Comments：{{ post.comment.count() }}</h4>
     <form action="{{url_for('comment', post_id=post.id)}}" method="POST">
         <div class="new-comment">
             <input type="text" class="form-control" placeholder="Comment" name="comment_detail">

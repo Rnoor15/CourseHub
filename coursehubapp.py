@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, url_for, flash, session, request
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
+from wtforms_sqlalchemy.fields import QuerySelectField
 from wtforms import StringField, PasswordField, BooleanField, TextAreaField
 from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
@@ -16,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Richard/Desktop/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/davidliao/Desktop/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -97,6 +98,28 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     detail = TextAreaField('Text', validators=[InputRequired()])
 
+class CourseSearch(db.Model):
+    __tablename__ = 'courses'
+    id = db.Column(db.Integer, primary_key=True)
+    course = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '{}'.format(self.course)
+
+def course_search_query():
+    return CourseSearch.query
+
+class CourseSearchForm(FlaskForm):
+    options = QuerySelectField(query_factory = course_search_query, allow_blank=True, get_label='course')
+
+
+class UserCourses(db.Model):
+    __tablename__ = 'usercourses'
+
+    id = db.Column(db.Integer, primary_key=True)
+    course = db.Column(db.Text)
+
+
 db.create_all()
 
 
@@ -157,10 +180,20 @@ def userspage():
     return render_template('userspage.html', name=current_user.username)
 
 
-@app.route('/coursesearch')
+@app.route('/coursesearch', methods=['GET', 'POST'])
 @login_required
 def coursesearch():
-    return render_template('coursesearch.html')
+
+    form = CourseSearchForm()
+
+    if form.validate_on_submit():
+        addtousercourse = UserCourses(course ='{}'.format(form.options.data))
+        db.session.add(addtousercourse)
+        db.session.commit()
+
+        return redirect(url_for('coursesearch'))
+
+    return render_template('coursesearch.html', form=form)
 
 
 @app.route('/detail/<post_id>',methods=['GET', 'POST'])

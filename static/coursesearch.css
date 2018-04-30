@@ -46,7 +46,7 @@ body {
 	width: 800px;
 	height: 420px;
 	background: white;
-	color: #fff;
+	color: #000000;
 	top: 50%;
 	left: 50%;
 	position: absolute;
@@ -57,7 +57,8 @@ body {
 	border-color: #77dd77;
 }
 
-.form button[type="Add Course"]{
+.form input[type="submit"]{
+	-webkit-appearance: none;
 	font-family: "Roberto", sans-serif;
 	text-transform: uppercase;
 	outline: 0;
@@ -73,7 +74,7 @@ body {
 	top: 70%;
 	left: 63%;
 }
-.form button[type="Add Course"]:hover{
+.form input[type="submit"]:hover{
 	background: #ffd1dc;
 	color: #000;
 }

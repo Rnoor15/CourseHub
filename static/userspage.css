@@ -36,7 +36,8 @@ div.courseSB {
   border-color: black;
 }
 
-button[type="Add Course"] {
+input[type="submit"] {
+  -webkit-appearance: none;
   text-transform: uppercase;
   outline: 0;
   background: #77dd77;
@@ -48,11 +49,11 @@ button[type="Add Course"] {
   cursor: pointer;
   border-radius: 20px;
   position:absolute;
-  top: 75%;
+  top: 85%;
   left: 10%;
 }
 
-button[type="Add Course"]:hover {
+input[type="submit"]:hover {
     background: #ffd1dc;
     color: #000;
   }

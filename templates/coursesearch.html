@@ -9,6 +9,7 @@ Dashboard
 <link rel="stylesheet" href="{{url_for('.static', filename='coursesearch.css')}}">
 {% endblock %}
 
+
 {% block content %}
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -42,212 +43,21 @@ Dashboard
 				<a type="Subject"><u><b>Subject</b></u></a>
 				<br>
 				<br>
-			<div class = "coursesearchSB">
-				<ul id="AllSubjects">
-					<li id="Bio" tabindex="1" onclick="javascript:displaySubcourse(this.id)"><a>Biology</a></li>
-					<li id="Chem" tabindex="2" onclick="javascript:displaySubcourse(this.id)"><a>Chemistry</a></li>
-					<li id="CS" tabindex="3" onclick="javascript:displaySubcourse(this.id)"><a>Computer Science</a></li>
-					<li id="Econ" tabindex="4" onclick="javascript:displaySubcourse(this.id)"><a>Economics</a></li>
-					<li id="Math" tabindex="5" onclick="javascript:displaySubcourse(this.id)"><a>Math</a></li>
-					<li id="Soc" tabindex="6" onclick="javascript:displaySubcourse(this.id)"><a>Sociology</a></li>
-					<li id="Stat" tabindex="7" onclick="javascript:displaySubcourse(this.id)"><a>Statistics</a></li>
-				</ul>
-			</div>
-			<div class = "subcourseSB">
-				<ul id="BioCourses" style="display: none">
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 100 Principles of Biology 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 102 Principles of Biology 2</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 120 Anatomy and Physiology 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 122 Anatomy and Physiology 2</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 203 Molecular Biology and Genetics</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 303 Cell Biology</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 322 Evolution</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>BIOL 380 Molecular Neurobiology</a></li>
-				</ul>
-				<ul id="ChemCourses" style="display: none">
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 10000 Essentials of General Chemistry Lecture</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 10200 General Chemistry 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 10400 General Chemistry 2</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 22200 Organic Chemistry Lecture 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 22400 Organic Chemistry Lecture 2</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 32200 Organic Chemistry Lecture 3</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 36600 Inorganic Chemistry</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 37600 Biochemistry 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CHEM 37700 Biochemistry 2</a></li>
-				</ul>
-				<ul id="CSCourses" style="display: none">
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 12700 Introduction to Computer Science</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSC1 13500 Software Design and Analysis 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 16000  Computer Architecture 1</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 23500 Software Design and Analysis 2</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 26000 Computer Architecture 2</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 33500 Software Design and Analysis 3</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 43500 Data Base Management</a></li>
-					<li tabindex="{{ url_for('login') }}"><a>CSCI 49900 Advanced Applications: Capstone</a></li>
-				</ul>
-				<ul id="EconCourses" style="display: none">
-					<li tabindex="1"><a>ECO 100 Introduction to Economics</a></li>
-					<li tabindex="2"><a>ECO 200 Principles of Microeconomics</a></li>
-					<li tabindex="3"><a>ECO 201 Principles of Macroeconomics</a></li>
-					<li tabindex="4"><a>ECO 300 Intermediate Microeconomics</a></li>
-					<li tabindex="5"><a>ECO 301 Intermediate Macroeconomics</a></li>
-					<li tabindex="6"><a>ECO 366 Security and Invertment Analysis</a></li>
-					<li tabindex="7"><a>ECO 426 Computer Applications in Economics</a></li>
-					<li tabindex="8"><a>ECO 499 Honors Project</a></li>
-				</ul>
-				<ul id="MathCourses" style="display: none">
-					<li tabindex="1"><a>MATH 10100 Algebra for College Students</a></li>
-					<li tabindex="2"><a>MATH 12500 Precalculus</a></li>
-					<li tabindex="3"><a>MATH 15000 Calculus with Analytic Geometry 1</a></li>
-					<li tabindex="4"><a>MATH 15500 Calculus with Analytic Geometry 2</a></li>
-					<li tabindex="5"><a>MATH 16000 Matrix Algebra</a></li>
-					<li tabindex="6"><a>MATH 25000 Calculus with Analytic Geometry 3</a></li>
-					<li tabindex="7"><a>MATH 34000 Topology</a></li>
-					<li tabindex="8"><a>MATH 49000 Honors Seminar</a></li>
-				</ul>
-				<ul id="SocCourses" style="display: none">
-					<li tabindex="1"><a>SOC 101 Introduction to Sociology</a></li>
-					<li tabindex="2"><a>SOC 201 The Family</a></li>
-					<li tabindex="3"><a>SOC 203 Education</a></li>
-					<li tabindex="4"><a>SOC 219 American Society</a></li>
-					<li tabindex="5"><a>SOC 307 Migration</a></li>
-					<li tabindex="6"><a>SOC 320 Law, Society and Civil Rights</a></li>
-					<li tabindex="7"><a>SOC W361 Development and Modernization</a></li>
-					<li tabindex="8"><a>SOC 471-472 Honors</a></li>
-				</ul>
-				<ul id="StatCourses" style="display: none">
-					<li tabindex="1"><a>STAT 11300 Elementary Probability and Statistics</a></li>
-					<li tabindex="2"><a>STAT 21300 Introduction to Applied Statistics</a></li>
-					<li tabindex="3"><a>STAT 22000 Statistical Analysis in Forensics</a></li>
-					<li tabindex="4"><a>STAT 31100 Probability Theory</a></li>
-					<li tabindex="5"><a>STAT 31300 Introduction to Mathematical Statistics</a></li>
-					<li tabindex="6"><a>STAT 35100 Advanced Biometrics</a></li>
-					<li tabindex="7"><a>STAT 39500 Advanced Topics in Statistics</a></li>
-					<li tabindex="8"><a>STAT 48600 Elements of Visualization</a></li>
-				</ul>
-				</div>
-				<button type="Add Course">Add Course</button>
+				    <form action="/coursesearch/add" method="POST">
+        				{{ form.csrf_token }}
+        				{{ form.options }}
+        				<ul>
+            				{% for error in form.options.errors %}
+            				<li style="color:red;">{{ error }}</li>
+            				{% endfor %}
+        				</ul>
+                <input type="submit" value="Add Course"></input>
+   					</form>
 			</form>
+		</div>
 		</div>
 	</body>
 	</html>
-
-	<script>
-	    function displaySubcourse(id) {
-	    	if (id == "Bio"){
-		    	if (document.getElementById("BioCourses").style.display == "block")
-		    	{
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('BioCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    }
-		    else if (id == "Chem"){
-		    	if (document.getElementById("ChemCourses").style.display == "block")
-		    	{
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('ChemCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    }
-		    else if (id == "CS"){
-		    	if (document.getElementById("CSCourses").style.display == "block")
-		    	{
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('CSCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    }
-		    else if (id == "Econ"){
-		    	if (document.getElementById("EconCourses").style.display == "block")
-		    	{
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('EconCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    }
-		    else if (id == "Math"){
-		    	if (document.getElementById("MathCourses").style.display == "block")
-		    	{
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('MathCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    }
-		    else if (id == "Soc"){
-		    	if (document.getElementById("SocCourses").style.display == "block")
-		    	{
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('SocCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    }
-		    else if (id == "Stat"){
-		    	if (document.getElementById("StatCourses").style.display == "block")
-		    	{
-		    		document.getElementById('StatCourses').style.display = 'none';
-		    	}
-		    	else
-		    	{
-		    		document.getElementById('StatCourses').style.display = 'block';
-		    	}
-		    		document.getElementById('ChemCourses').style.display = 'none';
-		    		document.getElementById('CSCourses').style.display = 'none';
-		    		document.getElementById('EconCourses').style.display = 'none';
-		    		document.getElementById('MathCourses').style.display = 'none';
-		    		document.getElementById('SocCourses').style.display = 'none';
-		    		document.getElementById('BioCourses').style.display = 'none';
-		    }
-	    }
-	</script>
 
 
 {% endblock %}

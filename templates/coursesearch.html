@@ -1,5 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
+{% from "_render_field.html" import render_field %}
+
 {% block title %}
 Dashboard
 {% endblock %}
@@ -42,9 +44,14 @@ Dashboard
 				<a type="Subject"><u><b>Subject</b></u></a>
 				<br>
 				<br>
+<<<<<<< HEAD
 				    <form action="/coursesearch" method="POST">
+=======
+				    <form action="{{ url_for('coursesearch') }}" method="POST">
+>>>>>>> 4b19f4b78b5c44299fe1c42c541426667ee877a9
         				{{ form.csrf_token }}
-        				{{ form.options }}
+
+        				{{ render_field(form.options) }}
         				<ul>
             				{% for error in form.options.errors %}
             				<li style="color:red;">{{ error }}</li>

@@ -17,7 +17,11 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
+<<<<<<< HEAD
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/davidliao/Documents/GitHub/CourseHub/courseHub.db'
+=======
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Richard/Desktop/CourseHub/courseHub.db'
+>>>>>>> 4b19f4b78b5c44299fe1c42c541426667ee877a9
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)

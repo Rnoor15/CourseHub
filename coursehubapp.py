@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/davidliao/Desktop/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/rifatnoor/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -25,6 +25,11 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
+students_courses = db.Table('students_courses',
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('course_id', db.Integer(), db.ForeignKey('course.id'))
+)
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -34,6 +39,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(80), nullable=False)
     post = db.relationship('Post', backref='user', lazy='dynamic')
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
+    courses = db.relationship('Course', secondary=students_courses, backref=db.backref('students'), lazy='dynamic')
 
 
 class Post(db.Model):
@@ -62,8 +68,11 @@ class Course(db.Model):
     __tablename__ = 'course'
     id = db.Column(db.Integer, primary_key=True)
     course_name = db.Column(db.String(100), nullable=False)
-    subjecct_id = db.Column(db.Integer, db.ForeignKey('subject.id'), nullable=False)
+    subject_id = db.Column(db.Integer, db.ForeignKey('subject.id'), nullable=False)
     post = db.relationship('Post', backref='course', lazy='dynamic')
+
+    def __repr__(self):
+        return '{}'.format(self.course_name)
 
 
 class Subject(db.Model):
@@ -72,11 +81,13 @@ class Subject(db.Model):
     subjectname = db.Column(db.String(20), nullable=False)
     course = db.relationship('Course', backref='subject', lazy='dynamic')
 
+    def __repr__(self):
+        return '{}'.format(self.subjectname)
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
@@ -98,27 +109,11 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     detail = TextAreaField('Text', validators=[InputRequired()])
 
-class CourseSearch(db.Model):
-    __tablename__ = 'courses'
-    id = db.Column(db.Integer, primary_key=True)
-    course = db.Column(db.String(100))
-
-    def __repr__(self):
-        return '{}'.format(self.course)
-
 def course_search_query():
-    return CourseSearch.query
+    return Course.query
 
 class CourseSearchForm(FlaskForm):
-    options = QuerySelectField(query_factory = course_search_query, allow_blank=True, get_label='course')
-
-
-class UserCourses(db.Model):
-    __tablename__ = 'usercourses'
-
-    id = db.Column(db.Integer, primary_key=True)
-    course = db.Column(db.Text)
-
+    options = QuerySelectField(query_factory = course_search_query, allow_blank=True)
 
 db.create_all()
 
@@ -187,8 +182,10 @@ def coursesearch():
     form = CourseSearchForm()
 
     if form.validate_on_submit():
-        addtousercourse = UserCourses(course ='{}'.format(form.options.data))
-        db.session.add(addtousercourse)
+        addtousercourse = Course(course ='{}'.format(form.options.data))
+        course_to_add = Course.query.filter(Course.course_name == addtousercourse.course_name).first()
+        user = User.query.filter_by(username=session['username']).first()
+        course_to_add.students.append(user)
         db.session.commit()
 
         return redirect(url_for('coursesearch'))

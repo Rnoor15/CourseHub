@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/rifatnoor/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/davidliao/Documents/GitHub/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -182,7 +182,7 @@ def coursesearch():
     form = CourseSearchForm()
 
     if form.validate_on_submit():
-        addtousercourse = Course(course ='{}'.format(form.options.data))
+        addtousercourse = Course(course_name ='{}'.format(form.options.data))
         course_to_add = Course.query.filter(Course.course_name == addtousercourse.course_name).first()
         user = User.query.filter_by(username=session['username']).first()
         course_to_add.students.append(user)

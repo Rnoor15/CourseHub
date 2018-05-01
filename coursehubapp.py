@@ -182,7 +182,7 @@ def coursesearch():
     form = CourseSearchForm()
 
     if form.validate_on_submit():
-        addtousercourse = Course(course ='{}'.format(form.options.data))
+        addtousercourse = Course(course_name ='{}'.format(form.options.data))
         course_to_add = Course.query.filter(Course.course_name == addtousercourse.course_name).first()
         user = User.query.filter_by(username=session['username']).first()
         course_to_add.students.append(user)

@@ -78,7 +78,7 @@
 </nav>
 
 <div class="post">
-  <h3 class="head">Create a Post</h3><br>
+  <h3 class="head">Create a Post in {{ course }}</h3><br>
   <div class=container>
   <form action="{{ url_for('post', course_id=course.id) }}" method="POST">
   	{{ form.csrf_token }}
@@ -99,6 +99,7 @@
   {% endwith %}
 
     <button type="submit" class="btn btn-success btn-block">Submit Post</button><br>
+    <center><a href={{ url_for('course', course_id=course.id) }} class="btn btn-success">Cancel</a></center>
   </form>
 </div>
 </div>

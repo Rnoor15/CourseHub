@@ -63,7 +63,10 @@ h4{
             <input type="text" class="form-control" placeholder="Comment" name="comment_detail">
             <input name="post_id" type="hidden" value="{{ post.id }}" />
     </div>
-    <button class="btn-send">Submit</button>
+    
+    <button class="btn-send">Submit</button> &nbsp
+    <a href='#' class="btn btn-success">Cancel</a>
+    
     </form>
     <ul class="comment-list">
         {% for commnet in post.comment%}

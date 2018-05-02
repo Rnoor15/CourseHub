@@ -199,7 +199,7 @@ def coursesearch():
     return render_template('coursesearch.html', form=form)
 
 
-@app.route('/detail/<post_id>',methods=['GET', 'POST'])
+@app.route('/detail/<post_id>', methods=['GET', 'POST'])
 def detail(post_id):
     postdetail = Post.query.filter(Post.id == post_id).first()
     return render_template('detail.html', post=postdetail)

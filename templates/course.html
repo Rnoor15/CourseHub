@@ -38,7 +38,7 @@
   </ul>
 </nav>
 <br>
-<center><h1>Classroom Posts</h1></center>
+<center><h1>{{ course.course_name }}</h1></center>
 <br>
 <div class="form-group"> 
 	<input type="text" class="form-control" placeholder="Search posts" id="search">
@@ -68,6 +68,8 @@
 </div>
 </div>
 <br>
-<center><a href={{ url_for('userspage') }} class="btn btn-success">Home</a></center>
+<center><a href={{ url_for('userspage') }} class="btn btn-success">Home</a>
+<a href={{ url_for('post') }} class="btn btn-success">Create Post</a>
+</center>
 </body>
 </html>

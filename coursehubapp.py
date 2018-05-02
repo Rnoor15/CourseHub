@@ -159,20 +159,26 @@ def signup():
     return render_template('signup.html', form=form)
 
 
-@app.route('/course')
+@app.route('/course/<course_id>', methods=['GET', 'POST'])
 @login_required
-def course():
+def course(course_id):
     context = {
         'post': Post.query.order_by(Post.post_time.desc()).all()
     }
 
-    return render_template('course.html', **context)
+    curr_course = Course.query.filter(Course.id==course_id).first()
+
+    return render_template('course.html',course_id=course_id, **context, course=curr_course)
 
 
-@app.route('/user')
+@app.route('/userpage')
 @login_required
 def userspage():
-    return render_template('userspage.html', name=current_user.username)
+    user = User.query.filter_by(username=session['username']).first()
+    context = {
+        'course': Course.query.filter(Course.students.any(id=user.id)).all()
+    }
+    return render_template('userspage.html', **context)
 
 
 @app.route('/coursesearch', methods=['GET', 'POST'])

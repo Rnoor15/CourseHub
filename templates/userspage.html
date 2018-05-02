@@ -36,17 +36,17 @@ User's Page
       <div class="container">
         <div class="starter-template">
           <h1>Your List Of Courses</h1>
-          <p class="lead">
-            {% for course in courses %}
-              <a href="{{ course.link }}">{{ course.title }}</a>a>
-            {% endfor %}
 
           </p>
             
         </div>
       </div>
 
-      <div class = "courseSB"></div>
+      <div class = "courseSB">
+         {% for courses in course %}
+              <a href="{{ url_for('course', course_id=courses.id)}}">{{ courses.course_name }}</a><br>
+            {% endfor %}
+      </div>
         <a href="{{ url_for('coursesearch') }}">
           <input type="submit" value="Add Course"></input>
         </a>

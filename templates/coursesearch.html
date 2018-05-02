@@ -44,7 +44,6 @@ Dashboard
 				<a type="Subject"><u><b>Subject</b></u></a>
 				<br>
 				<br>
-				    <form action="/coursesearch" method="POST">
 				    <form action="{{ url_for('coursesearch') }}" method="POST">
         				{{ form.csrf_token }}
 

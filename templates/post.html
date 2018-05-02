@@ -80,7 +80,7 @@
 <div class="post">
   <h3 class="head">Create a Post</h3><br>
   <div class=container>
-  <form action="{{ url_for('post') }}" method="POST">
+  <form action="{{ url_for('post', course_id=course.id) }}" method="POST">
   	{{ form.csrf_token }}
 
     {{ render_field(form.title, placeholder = form.title.label.text) }}

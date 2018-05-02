@@ -163,7 +163,7 @@ def signup():
 @login_required
 def course(course_id):
     context = {
-        'post': Post.query.order_by(Post.post_time.desc()).all()
+        'post': Post.query.filter(Post.course_id==course_id).all()
     }
 
     curr_course = Course.query.filter(Course.id==course_id).first()
@@ -219,22 +219,21 @@ def comment(post_id):
     return redirect(url_for('detail', post_id=post_id))
 
 
-@app.route('/post', methods=['GET', 'POST'])
+@app.route('/post/<course_id>', methods=['GET', 'POST'])
 @login_required
-def post():
+def post(course_id):
     form = PostForm()
+    curr_course = Course.query.filter(Course.id==course_id).first()
 
     if form.validate_on_submit():
         user = User.query.filter_by(username=session['username']).first()
-        new_post = Post(title=form.title.data, description=form.description.data, user_id=user.id)
+        new_post = Post(title=form.title.data, description=form.description.data, user_id=user.id, course_id=course_id)
         db.session.add(new_post)
         db.session.commit()
 
-        flash("Sucess!")
+        return redirect(url_for('course', course_id=course_id))
 
-        return redirect(url_for('course'))
-
-    return render_template('post.html', form=form)
+    return render_template('post.html', form=form, course_id=course_id, course=curr_course)
 
 
 @app.route('/usercenter/<username>/<tag>')

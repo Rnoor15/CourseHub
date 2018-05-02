@@ -244,7 +244,7 @@ def usercenter(username,tag):
     context={
         'user':user
     }
-    if tag == '1':
+    if tag == 'post':
         return render_template('usercenter1.html', **context)
     else:
         return render_template('usercenter2.html', **context)

@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/rifatnoor/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Richard/Desktop/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -163,7 +163,7 @@ def signup():
 @login_required
 def course(course_id):
     context = {
-        'post': Post.query.filter(Post.course_id==course_id).all()
+        'post': Post.query.filter(Post.course_id==course_id).order_by(Post.post_time).all()
     }
 
     curr_course = Course.query.filter(Course.id==course_id).first()

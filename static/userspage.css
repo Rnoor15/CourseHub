@@ -36,7 +36,11 @@ div.courseSB {
   border-color: black;
 }
 
-input[type="submit"] {
+a[name="usercourse"]:hover {
+    background: #CDFEAA;
+}
+
+input[name="add"] {
   -webkit-appearance: none;
   text-transform: uppercase;
   outline: 0;
@@ -49,11 +53,34 @@ input[type="submit"] {
   cursor: pointer;
   border-radius: 20px;
   position:absolute;
-  top: 85%;
+  top: 81%;
   left: 10%;
 }
 
-input[type="submit"]:hover {
+input[name="add"]:hover {
     background: #ffd1dc;
     color: #000;
   }
+
+
+input[name="remove"] {
+  -webkit-appearance: none;
+  text-transform: uppercase;
+  outline: 0;
+  background: #77dd77;
+  width: 26.75%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 20px;
+  position:absolute;
+  top: 90%;
+  left: 10%;
+}
+
+input[name="remove"]:hover {
+    background: #ffd1dc;
+    color: #000;
+  }  

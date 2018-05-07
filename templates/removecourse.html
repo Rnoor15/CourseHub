@@ -41,7 +41,7 @@ Dashboard
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<div class = "User-courses">
 		<div class = "form">
-				<a type="Subject"><u><b>Subject</b></u></a>
+				<a type="Subject"><u><b>Select Course To Remove</b></u></a>
 				<br>
 				<br>
 				    <form action="{{ url_for('coursesearch') }}" method="POST">
@@ -53,7 +53,7 @@ Dashboard
             				<li style="color:red;">{{ error }}</li>
             				{% endfor %}
         				</ul>
-                <input type="submit" value="Add Course"></input>
+                <input type="submit" value="Remove Course"></input>
    					</form>
 		</div>
 		</div>

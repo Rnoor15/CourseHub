@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Richard/Desktop/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/davidliao/Documents/GitHub/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -197,6 +197,17 @@ def coursesearch():
         return redirect(url_for('coursesearch'))
 
     return render_template('coursesearch.html', form=form)
+
+@app.route('/removecourse', methods=['GET', 'POST'])
+@login_required
+def removecourse():
+
+    form = CourseSearchForm()
+
+    if form.validate_on_submit():
+        return redirect(url_for('removecourse'))
+
+    return render_template('removecourse.html', form=form)
 
 
 @app.route('/detail/<post_id>', methods=['GET', 'POST'])

@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/tingyang/Desktop/CSCI 499/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/rifatnoor/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -28,7 +28,7 @@ login_manager.login_view = 'login'
 
 students_courses = db.Table('students_courses',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
-    db.Column('course_id', db.Integer(), db.ForeignKey('course.id'))
+    db.Column('course_id', db.Integer(), db.ForeignKey('course.id'), primary_key=True)
 )
 
 class User(UserMixin, db.Model):
@@ -112,8 +112,17 @@ class CommentForm(FlaskForm):
 def course_search_query():
     return Course.query
 
+def course_remove_query():
+   user = User.query.filter_by(username=session['username']).first()
+   return Course.query.filter(Course.students.any(id=user.id)).all()
+
 class CourseSearchForm(FlaskForm):
     options = QuerySelectField(query_factory = course_search_query, allow_blank=True)
+
+
+class CourseRemoveForm(FlaskForm):
+    options = QuerySelectField(query_factory = course_remove_query, allow_blank=True)
+
 
 db.create_all()
 
@@ -202,10 +211,15 @@ def coursesearch():
 @login_required
 def removecourse():
 
-    form = CourseSearchForm()
+    form = CourseRemoveForm()
 
     if form.validate_on_submit():
-        return redirect(url_for('removecourse'))
+        removecourse = Course(course_name ='{}'.format(form.options.data))
+        course_to_remove= Course.query.filter(Course.course_name == removecourse.course_name).first()
+        user = User.query.filter_by(username=session['username']).first()
+        course_to_remove.students.remove(user)
+        db.session.commit()
+        return redirect(url_for('userspage'))
 
     return render_template('removecourse.html', form=form)
 

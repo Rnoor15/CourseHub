@@ -44,7 +44,7 @@ Dashboard
 				<a type="Subject"><u><b>Select Course To Remove</b></u></a>
 				<br>
 				<br>
-				    <form action="{{ url_for('coursesearch') }}" method="POST">
+				    <form action="{{ url_for('removecourse') }}" method="POST">
         				{{ form.csrf_token }}
 
         				{{ render_field(form.options) }}

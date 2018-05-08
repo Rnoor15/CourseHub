@@ -1,4 +1,4 @@
-﻿{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/wtf.html" as wtf %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,31 +17,75 @@
 	    height: 100%;
 	    margin: 0;
         padding: 0;
-        background: #e0e0e0;
+        background: #ffffff;
      }
+    .page-title{
+        text-align: center;
+    }
+    .post-info{
+        text-align: center;
+        margin-top: 16px;
+    }
+    .description{
+        padding: 10px 20px 10px 20px;
+    }
+    .post-container{
+        width: 70%;
+        margin: 0 auto;
+    }
+    .comment-container{
+        width: 70%;
+        margin: 0 auto;
+        border: 1px solid grey;
+        border-radius: 8px;
 
-.page-title{
-    text-align: center;
-}
+    }
+    .commentlist-container{
+        width: 70%;
+        margin: 0 auto;
+     }
+    .commentlist-container ul {
+        list-style: none;
+        margin:0;
+        padding:0;
+    }
+    .commentlist-container li{
+     }
+    .commentlist-container li:nth-of-type(odd){
+        background: #dffab9;
+    }
+    .create_time{
+        float: right;
+     }
+    textarea{
+         resize: none;
+        overflow: auto;
+        vertical-align: top;
+        height: 120px;
+        width: 100%;
+    }
+    .btn-send{
+        display: inline;
 
-.post-info{
-    text-align: center;
-    margin-top: 16px;
-}
+    }
+    .count{
+        position: absolute;
+        top: 230px;
+        font-size: 20px;
+    }
+    .post-detai{
+        width: 90%;
+        margin-left: 80px;
+    }
+    .username a{
+        text-decoration: none;
+    }
+    .author a{
+        text-decoration: none;
 
-.description{
-    padding: 10px 20px 10px 20px;
-}
-
-h4{
-    padding-left: 20px;
-}
-
-
-
+    }
 </style>
 </head>
-
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
         <a class="navbar-brand" href="#">CourseHub</a>
             <ul class="navbar-nav ml-auto">
@@ -50,35 +94,46 @@ h4{
                 </li>
              </ul>
     </nav>
-
+<div class="post-container">
     <h3 class="page-title">{{ post.title }}</h3>
     <p class="post-info">
-    <span class="author">Author：{{ post.user.username }}</span>
+    <span class="author"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ post.user.username }}</a></span>
     <span>  {{ post.post_time }}</span></p>
     <p class="description">{{ post.description}}</p>
+</div>
     <hr>
-    <h4>Comments：{{ post.comment.count() }}</h4>
+    <div class="comment-container">
+        <br>
+        <br>
+    <span class="count">{{ post.comment.count() }} Comments</span>
     <form action="{{url_for('comment', post_id=post.id)}}" method="POST">
         <div class="new-comment">
-            <input type="text" class="form-control" placeholder="Comment" name="comment_detail">
+            <textarea name="comment_detail" PLACEHOLDER="comment"></textarea>
             <input name="post_id" type="hidden" value="{{ post.id }}" />
-    </div>
-    
-    <button class="btn-send">Submit</button> &nbsp
-    <a href='#' class="btn btn-success">Cancel</a>
-    
+        </div>
+        <div class="btn-send">
+            <button class="btn btn-success">Submit</button> &nbsp
+            <a href='#' class="btn btn-success">Cancel</a>
+        </div>
     </form>
+    </div>
+  <br>
+<hr>
+        <br>
+    <div class="commentlist-container">
     <ul class="comment-list">
         {% for commnet in post.comment%}
         <li>
-            <div class="user_info">
-                <span class="username"> {{ commnet.user.username }}</span>
-                <span class="create_time">  {{ commnet.comment_time }}</span>
+            <span class="username"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ commnet.user.username }}</a></span>
+            <span class="create_time">  {{ commnet.comment_time }}</span>
+            <div class="post-detai">
+                <p class="detail">{{ commnet.detail }}</p>
             </div>
-            <p class="detail">{{ commnet.detail }}</p>
+<br>
         </li>
 
         {% endfor %}
     </ul>
+    </div>
 </body>
 </html>

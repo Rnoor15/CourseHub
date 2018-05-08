@@ -6,7 +6,7 @@
                 {% for post in user.post %}
                     <li class="list-group-item">
                    <p >Title:  <a href="{{ url_for('detail',post_id=post.id) }}"> {{ post.title }}</a></p>
-                        <span class="time">{{ post.post_time }}</span>
+                        <span class="time">{{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
                     </li>
                 {% endfor %}
             </ul>

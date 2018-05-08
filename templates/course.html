@@ -60,7 +60,7 @@
     <tr>
         <td>{{ posts.comment.count() }}</td>
 	<td><a href="{{url_for('detail',post_id = posts.id)}}"><font color="white">{{ posts.title }}</font></a></td>
-        <td>{{ posts.user.username }}</td>
+        <td><a href="{{url_for('usercenter',username = posts.user.username, tag='post')}}">{{ posts.user.username }}</a></td>
         <td></td>
     </tr>
     {% endfor %}

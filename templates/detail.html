@@ -95,7 +95,7 @@
     <h3 class="page-title">{{ post.title }}</h3>
     <p class="post-info">
     <span class="author"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ post.user.username }}</a></span>
-    <span>  {{ post.post_time }}</span></p>
+    <span>  {{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span></p>
     <p class="description">{{ post.description}}</p>
 </div>
     <hr>
@@ -110,7 +110,7 @@
         </div>
         <div class="btn-send">
             <button class="btn btn-success">Submit</button> &nbsp
-            <a href='#' class="btn btn-success">Cancel</a>
+                <a href="{{ url_for('course', course_id=post.course.id) }}" class="btn btn-success">Return</a>
         </div>
     </form>
     </div>
@@ -122,7 +122,7 @@
         {% for commnet in post.comment%}
         <li>
             <span class="username"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ commnet.user.username }}</a></span>
-            <span class="create_time">  {{ commnet.comment_time }}</span>
+            <span class="create_time">  {{ commnet.comment_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
             <div class="post-detai">
                 <p class="detail">{{ commnet.detail }}</p>
             </div>

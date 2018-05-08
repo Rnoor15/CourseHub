@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Richard/Desktop/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/tingyang/Desktop/CSCI 499/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -219,6 +219,8 @@ def detail(post_id):
 @app.route('/comment/<post_id>', methods=['POST'])
 @login_required
 def comment(post_id):
+    if not request.form.get('comment_detail'):
+        return redirect(url_for('detail', post_id=post_id))
     detail = request.form.get('comment_detail')
     user = User.query.filter_by(username=session['username']).first()
     post = Post.query.filter(Post.id == post_id).first()

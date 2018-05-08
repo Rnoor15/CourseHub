@@ -27,7 +27,7 @@ login_manager.login_view = 'login'
 
 
 students_courses = db.Table('students_courses',
-    db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
+    db.Column('user_id', db.Integer(), db.ForeignKey('user.id'), primary_key=True),
     db.Column('course_id', db.Integer(), db.ForeignKey('course.id'), primary_key=True)
 )
 

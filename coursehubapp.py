@@ -51,7 +51,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'), nullable=False)
     post_time = db.Column(db.DateTime, default=datetime.now)
-    #rating = db.Column(db.Integer, default=0)
+    rating = db.Column(db.Integer, default=0)
     comment = db.relationship('Comment', backref='post', lazy='dynamic')
 
 

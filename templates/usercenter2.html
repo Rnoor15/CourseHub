@@ -5,7 +5,7 @@
 
  <div class="all-comment" style="margin:0 auto;width:900px;height:auto;">
      <ul>
-    {% for comments in user.comment %}
+    {% for comments in comments %}
                 <li class="list-group-item"  >
                     <p >Title:  <a href="{{ url_for('detail',post_id=comments.post.id) }}"> {{ comments.post.title }}</a></p>
                      <p class="detail">{{ comments.detail }}</p>
@@ -14,4 +14,30 @@
         {% endfor %}
     </ul>
      </div>
+    <div class="pagination-container">
+    <ul class="pagination">
+       {% if pagination2.has_prev %}
+            <li><a href="{{url_for('usercenter',username=user.username,tag='comment', page=pagination2.page-1)}}">«</a></li>
+            {% else %}
+            <li><a href="">||</a></li>
+            {% endif %}
+            {% for p in pagination2.iter_pages() %}
+                {% if p %}
+                    {% if p == pagination2.page %}
+                <li ><a class="active" href="">{{p}}</a></li>
+                {% else %}
+                <li><a href="{{ url_for('usercenter',username=user.username,tag='comment', page=p)}}">{{p}}</a></li>
+                {% endif %}
+                {% else %}
+                <li><a href="">&hellip;</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if pagination2.has_next %}
+                <li><a href="{{url_for('usercenter',username=user.username,tag='comment',page=pagination2.page+1)}}">»</a></li>
+            {% else %}
+             <li><a href="">||</a></li>
+            {% endif %}
+    </ul>
+      </div>
+
 {% endblock %}

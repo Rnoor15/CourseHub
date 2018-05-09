@@ -9,6 +9,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from datetime import datetime
 from sqlalchemy.exc import IntegrityError
+from flask_paginate import Pagination, get_page_parameter
+
 import sqlite3
 
 from time import sleep
@@ -18,7 +20,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/rifatnoor/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/tingyang/desktop/CSCI 499/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -233,7 +235,10 @@ def removecourse():
 @app.route('/detail/<post_id>', methods=['GET', 'POST'])
 def detail(post_id):
 	postdetail = Post.query.filter(Post.id == post_id).first()
-	return render_template('detail.html', post=postdetail)
+	page = request.args.get(get_page_parameter(), type=int, default=1)
+	pagination = postdetail.comment.paginate(page=page, per_page=10, error_out=False)
+	comments = pagination.items
+	return render_template('detail.html', post=postdetail, pagination=pagination, comments=comments)
 
 
 @app.route('/comment/<post_id>', methods=['POST'])

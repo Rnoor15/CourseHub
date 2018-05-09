@@ -1,4 +1,5 @@
 {% import "bootstrap/wtf.html" as wtf %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,7 @@
         background: #ffffff;
      }
     .page-title{
+        margin-top: 50px;
         text-align: center;
     }
     .post-info{
@@ -28,6 +30,9 @@
     }
     .description{
         padding: 10px 20px 10px 20px;
+    }
+    .post-time{
+        margin-left: 50px;
     }
     .post-container{
         width: 70%;
@@ -44,20 +49,42 @@
         margin: 0 auto;
      }
     .commentlist-container ul {
-        list-style: none;
-        margin:0;
-        padding:0;
+        list-style-type: none;
+        counter-reset: li-counter;
+        padding: 0;
+        margin: 0;
+        margin-left: 8px;
+
     }
     .commentlist-container li{
+        position: relative;
+        margin-bottom: 30px;
+        padding: 18px;
+        background-color: rgba(206, 227, 203, 0.46);
+        border-right: 6px solid #3da259;
+
+      }
+    .li-counter {
+        position: absolute;
+        top: -8px;
+        left: -15px;
+        width: 50px;
+        height: 35px;
+        font-size: 26px;
+        line-height: 35px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+        background-color: #38a356;
+        z-index: 99;
+        overflow: hidden;
+
      }
-    .commentlist-container li:nth-of-type(odd){
-        background: #dffab9;
-    }
     .create_time{
         float: right;
      }
     textarea{
-         resize: none;
+        resize: none;
         overflow: auto;
         vertical-align: top;
         height: 120px;
@@ -66,14 +93,18 @@
     .btn-send{
         display: inline;
     }
-    .count{
-        position: absolute;
-        top: 230px;
-        font-size: 20px;
+    .count {
+        line-height: 40px;
+        font-weight: bold;
+        color: #47a352;
+
     }
     .post-detai{
         width: 90%;
-        margin-left: 80px;
+        margin-left: 100px;
+    }
+    .username{
+        margin-left: 25px;
     }
     .username a{
         text-decoration: none;
@@ -81,6 +112,34 @@
     .author a{
         text-decoration: none;
     }
+    .pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    .pagination li {
+        display: inline;
+    }
+    .pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+    ul.pagination li a.active {
+        background-color: #38a356;
+        color: white;
+        border: 1px solid #38a356;
+    }
+    .pagination li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+    .pagination-container{
+        width: 70%;
+        margin: 0 auto;
+     }
 </style>
 </head>
     <nav class="navbar navbar-expand-sm bg-success navbar-dark">
@@ -95,42 +154,74 @@
     <h3 class="page-title">{{ post.title }}</h3>
     <p class="post-info">
     <span class="author"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ post.user.username }}</a></span>
-    <span>  {{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span></p>
+    <span class="post-time">  {{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span></p>
     <p class="description">{{ post.description}}</p>
 </div>
     <hr>
     <div class="comment-container">
-        <br>
-        <br>
     <span class="count">{{ post.comment.count() }} Comments</span>
     <form action="{{url_for('comment', post_id=post.id)}}" method="POST">
         <div class="new-comment">
-            <textarea name="comment_detail" PLACEHOLDER="comment"></textarea>
+            <textarea name="comment_detail" PLACEHOLDER="  comment"></textarea>
             <input name="post_id" type="hidden" value="{{ post.id }}" />
         </div>
         <div class="btn-send">
             <button class="btn btn-success">Submit</button> &nbsp
-                <a href="{{ url_for('course', course_id=post.course.id) }}" class="btn btn-success">Return</a>
+            <a href="{{ url_for('course', course_id=post.course.id) }}" class="btn btn-success">Cancel</a>
         </div>
     </form>
     </div>
   <br>
 <hr>
         <br>
-    <div class="commentlist-container">
-    <ul class="comment-list">
-        {% for commnet in post.comment%}
-        <li>
-            <span class="username"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ commnet.user.username }}</a></span>
-            <span class="create_time">  {{ commnet.comment_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
-            <div class="post-detai">
-                <p class="detail">{{ commnet.detail }}</p>
-            </div>
-<br>
-        </li>
 
-        {% endfor %}
+<br>
+<br>
+    <div class="commentlist-container">
+
+    <ul class="comment-list">
+
+                {% for comments in comments %}
+
+        <li>
+            <span class ="li-counter">{{ loop.index + (pagination.page - 1) * pagination.per_page }}</span>
+            <span class="username"> <a href="{{url_for('usercenter',username = post.user.username, tag='post')}}">{{ comments.user.username }}</a></span>
+            <span class="create_time">  {{ comments.comment_time.strftime('%Y-%m-%d %H:%M:%S')  }}</span>
+            <div class="post-detai">
+                <p class="detail">{{ comments.detail }}</p>
+            </div>
+         </li>
+
+                {% endfor %}
+
+    </ul>
+
+    </div>
+    <div class="pagination-container">
+    <ul class="pagination">
+       {% if pagination.has_prev %}
+            <li><a href="{{url_for('detail',post_id= post.id, page=pagination.page-1)}}">«</a></li>
+            {% else %}
+            <li><a href="">||</a></li>
+            {% endif %}
+            {% for p in pagination.iter_pages() %}
+                {% if p %}
+                    {% if p == pagination.page %}
+                <li ><a class="active" href="">{{p}}</a></li>
+                {% else %}
+                <li><a href="{{ url_for('detail',post_id= post.id, page=p)}}">{{p}}</a></li>
+                {% endif %}
+                {% else %}
+                <li><a href="">&hellip;</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if pagination.has_next %}
+                <li><a href="{{url_for('detail',post_id= post.id,page=pagination.page+1)}}">»</a></li>
+            {% else %}
+             <li><a href="">||</a></li>
+            {% endif %}
     </ul>
     </div>
+
 </body>
 </html>

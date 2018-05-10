@@ -16,7 +16,9 @@
     font-family: "Mina", sans-serif;
 	  height: 100%;
 	  margin: 0;
-    padding: 0;
+    	  padding: 0;
+	  max-width: 100%;
+    	  overflow-x: hidden;
   }
 
   h1 {
@@ -25,7 +27,7 @@
   }
 
   .container {
-    padding-top: 20px;
+    padding-top: 18px;
     text-align: center;
     margin-top: 20px;
     padding-bottom: 20px;
@@ -35,8 +37,89 @@
     transform: translate(-50%, -50%);
   }
 
+  .info{
+	width: 370px;
+	height: 150px;
+	font-family: "Arial", sans-serif;
+	background: #141416;
+	color: #FFFFFF;
+	top: 40%;
+	left: 50%;
+	position: relative;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+        padding: 11px;  
+	border-style: solid;
+        border-width: 3px;
+	border-color: green;	
+}
+  .avatar{
+	width: 90px;
+	height: 88px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: calc(50% - 50px);
+	}
+  .pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+    .pagination li {
+        display: inline;
+    }
+    .pagination li a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+        border: 1px solid #ddd;
+    }
+    ul.pagination li a.active {
+        background-color: #38a356;
+        color: white;
+        border: 1px solid #38a356;
+    }
+    .pagination li a:hover:not(.active) {
+        background-color: #ddd;
+    }
+    .pagination-container{
+        width: 70%;
+        margin: 0 auto;
+     }
+  .title{
+	width: 1100px;
+	height: 140px;
+	font-family: "Arial", sans-serif;
+	color: #21B00C;
+	top: 122%;
+	left: 50%;
+	position: relative;
+	transform: translate(-50%, -50%);
+	padding: 5px;
+}
+  .cols {
+        position: absolute;
+        top: -8px;
+        left: -15px;
+        width: 50px;
+        height: 35px;
+        font-size: 26px;
+        line-height: 35px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+        background-color: #38a356;
+        z-index: 99;
+        overflow: hidden;
 
-  </style>
+ }
+
+
+
+</style>
 
 </head>
 <body>
@@ -53,25 +136,38 @@
   </ul>
 </nav>
 
-<div class="container">
+
 <br>
-<img src="/static/chlogo.png" style="width:375px;height:200px;">
+<center><img src="/static/chlogo.png" style="width:350px;height:175px;"></center>
 <br>
 
-<h1>Welcome to CourseHub</h1>
-  <div class="row">
+
+  <center><h1>Welcome to CourseHub</h1></center>
+
+<div class="row">
   <div class="col-sm">
-    <p>Stuggling with your classes? Need help with something related to your class? Need to communicate with your classmates about something? Don't worry, CourseHub has you covered!</p>
+  <div class="info">
+    <img src="/static/icon1.png" class="avatar">
+    <br>
+    <center><p>Struggling with your classes? Need help with something related to your class? Need to communicate with your classmates? Don't worry, CourseHub has you covered!</p></center>
+  </div>
   </div>
   <div class="col-sm">
-    <p>Select a specific subject and find your class! Be able to post questions on a forum where anyone in the class can help out. CourseHub encourages students to discuss with each other and help one another. </p>
+  <div class="info">
+    <img src="/static/icon2.png" class="avatar">
+    <br>
+    <center><p>Select a specific subject and find your class! Be able to post questions on a forum where anyone in the class can help out. CourseHub encourages students to help one another. </p></center>
   </div>
-  <div class="col-sm"> 
-    <p>If you don't have an account, register now with your Hunter college email! Don't fall behind in your class!</p>
+  </div>
+  <div class="col-sm">
+  <div class="info"> 
+    <img src="/static/icon3.png" class="avatar">
+    <br>
+    <center><p>If you don't have an account, register now with your Hunter college email! Don't fall behind in your class!</p></center>
+  </div>
   </div> 
 </div>
 
-</div>
 
 </body>
 </html>

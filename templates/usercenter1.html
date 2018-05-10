@@ -3,7 +3,7 @@
     <p style="font-size: 22px; text-align: center;">{{ user.username }}'s Posts</p>
     <div class="all-post"  style="margin:0 auto;width:900px;height:auto;">
               <ul class="note-list" >
-                {% for post in user.post %}
+                {% for post in posts %}
                     <li class="list-group-item">
                    <p >Title:  <a href="{{ url_for('detail',post_id=post.id) }}"> {{ post.title }}</a></p>
                         <span class="time">{{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
@@ -11,4 +11,29 @@
                 {% endfor %}
             </ul>
      </div>
+      <div class="pagination-container">
+    <ul class="pagination">
+       {% if pagination1.has_prev %}
+            <li><a href="{{url_for('usercenter',username=user.username,tag='post', page=pagination1.page-1)}}">«</a></li>
+            {% else %}
+            <li><a href="">||</a></li>
+            {% endif %}
+            {% for p in pagination1.iter_pages() %}
+                {% if p %}
+                    {% if p == pagination1.page %}
+                <li ><a class="active" href="">{{p}}</a></li>
+                {% else %}
+                <li><a href="{{ url_for('usercenter',username=user.username,tag='post', page=p)}}">{{p}}</a></li>
+                {% endif %}
+                {% else %}
+                <li><a href="">&hellip;</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if pagination1.has_next %}
+                <li><a href="{{url_for('usercenter',username=user.username,tag='post',page=pagination1.page+1)}}">»</a></li>
+            {% else %}
+             <li><a href="">||</a></li>
+            {% endif %}
+    </ul>
+      </div>
  {% endblock %}

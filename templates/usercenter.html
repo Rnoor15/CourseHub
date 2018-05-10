@@ -27,8 +27,10 @@
      margin:0 auto;
    }
   .selection li {
+
+
       display: block;
-       float: left;
+      float: left;
       width: 100px;
       text-align: center;
       }
@@ -46,6 +48,34 @@
   .list-group-item p {
        margin: 0;
   }
+   .pagination {
+       display: inline-block;
+       padding: 0;
+       margin: 0;
+   }
+   .pagination li {
+       display: inline;
+   }
+   .pagination li a {
+       color: black;
+       float: left;
+       padding: 8px 16px;
+       text-decoration: none;
+       transition: background-color .3s;
+       border: 1px solid #ddd;
+   }
+   ul.pagination li a.active {
+       background-color: #38a356;
+       color: white;
+       border: 1px solid #38a356;
+   }
+   .pagination li a:hover:not(.active) {
+       background-color: #ddd;
+   }
+   .pagination-container{
+       width: 70%;
+       margin: 0 auto;
+   }
     </style>
 </head>
    <nav class="navbar navbar-expand-sm bg-success navbar-dark">

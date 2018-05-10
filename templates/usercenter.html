@@ -64,11 +64,17 @@
 <div class="header">
     <ul class="selection">
         <li> <a href="{{ url_for('usercenter',username=user.username,tag='post') }}">
-          Post({{ user.post.count() }})</a> </li>
+          Posts ({{ user.post.count() }})</a> </li>
         <li><a href=" {{ url_for('usercenter',username=user.username,tag='comment')}}">
-           Comment({{ user.comment.count() }})</a> </li>
+           Comments ({{ user.comment.count() }})</a> </li>
+
+	<br>
+	<br>
+
 </ul>
 </div>
+<center><a href="{{ url_for('userspage') }}">
+	Home</center>
 <br> <hr>
 {% block user %}{% endblock %}
 </body>

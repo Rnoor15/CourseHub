@@ -18,7 +18,7 @@
 	margin-right: auto;
 }
 .container{
-    width: 1100px;
+    width: 900px;
 }
 .wrapper{
     overflow-y:scroll;
@@ -32,9 +32,9 @@
 <nav class="navbar navbar-expand-sm bg-success navbar-dark">
  <a class="navbar-brand" href="#">CourseHub</a>
   <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="#">Sign out</a>
-    </li>
+	<li class="nav-item">
+                   <a class="nav-link" href="{{ url_for('logout') }}">Sign out</a>
+               </li>
   </ul>
 </nav>
 <br>
@@ -52,7 +52,6 @@
         <th>Comments</th>
         <th>Title</th>
         <th>Author</th>
-	<th>Rating</th>
       </tr>
     </thead>
     <tbody>
@@ -60,8 +59,7 @@
     <tr>
         <td>{{ posts.comment.count() }}</td>
 	<td><a href="{{url_for('detail',post_id = posts.id)}}"><font color="white">{{ posts.title }}</font></a></td>
-        <td><a href="{{url_for('usercenter',username = posts.user.username, tag='post')}}">{{ posts.user.username }}</a></td>
-        <td></td>
+        <td><a href="{{url_for('usercenter',username = posts.user.username, tag='post')}}"><font color="white">{{ posts.user.username }}</a></td>
     </tr>
     {% endfor %}
   </table>

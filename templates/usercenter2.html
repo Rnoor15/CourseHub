@@ -7,17 +7,19 @@
      <ul>
     {% for comments in comments %}
                 <li class="list-group-item"  >
-                    <p >Title:  <a href="{{ url_for('detail',post_id=comments.post.id) }}"> {{ comments.post.title }}</a></p>
-                     <p class="detail">{{ comments.detail }}</p>
-                    <span class="time">{{ comments.comment_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
-                </li>
+                    <span style="border-radius: 5px; background: #30a64a; color: white; margin-right: 10px;" >  Title  </span>
+                    <span> <a style="color: #646c71;" href="{{ url_for('detail',post_id=comments.post.id) }}">  {{ comments.post.title }}</a></span>
+                    <p class="detail">{{ comments.detail }}</p>
+                    <span style="float: right; border-radius: 5px; background: #30a64a; color: white;">{{ comments.comment_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                    <br>
+                 </li>
         {% endfor %}
     </ul>
      </div>
     <div class="pagination-container">
     <ul class="pagination">
        {% if pagination2.has_prev %}
-            <li><a href="{{url_for('usercenter',username=user.username,tag='comment', page=pagination2.page-1)}}">«</a></li>
+            <li><a href="{{url_for('usercenter',username=user.username,tag='comment', page = pagination2.page - 1)}}">«</a></li>
             {% else %}
             <li><a href="">||</a></li>
             {% endif %}
@@ -33,7 +35,7 @@
                 {% endif %}
             {% endfor %}
             {% if pagination2.has_next %}
-                <li><a href="{{url_for('usercenter',username=user.username,tag='comment',page=pagination2.page+1)}}">»</a></li>
+                <li><a href="{{url_for('usercenter',username=user.username,tag='comment',page=pagination2.page + 1)}}">»</a></li>
             {% else %}
              <li><a href="">||</a></li>
             {% endif %}

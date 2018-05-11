@@ -5,8 +5,11 @@
               <ul class="note-list" >
                 {% for post in posts %}
                     <li class="list-group-item">
-                   <p >Title:  <a href="{{ url_for('detail',post_id=post.id) }}"> {{ post.title }}</a></p>
-                        <span class="time">{{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                    <span style="border-radius: 5px; background: #30a64a; color: white; margin-right: 10px;" >  Title  </span>
+                        <span>  <a style="color: #646c71;" href="{{ url_for('detail',post_id=post.id) }}"> {{ post.title }}</a></span>
+                        <br>
+                        <span style="float:right; border-radius:  5px; background: #30a64a; color: white;" >{{ post.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                        <br>
                     </li>
                 {% endfor %}
             </ul>

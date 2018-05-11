@@ -47,14 +47,8 @@ User's Page
               <a name="usercourse" style="color:green; font-weight:bold; font-size:15px;" href="{{ url_for('course', course_id=courses.id)}}">{{ courses.course_name }}</a><br>
             {% endfor %}
       </div>
-        <a  href="{{ url_for('coursesearch') }}">
-          <input name="add" type="submit" value="Add Course"></input>
-        </a>
-        <a  href="{{ url_for('removecourse') }}">
-          <input name="remove" type="submit" value="Remove Course"></input>
-        </a>
         <a href="{{url_for('usercenter',username = user.username, tag='post')}}">
-          <input name="usercenter" type="submit" value="Your Posts"></input>
+          <input name="usercenter" type="submit" value=" {{user.username}} 's Posts"></input>
         </a>
       </div>
     </div>

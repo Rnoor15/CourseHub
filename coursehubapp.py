@@ -195,7 +195,7 @@ def users(course_id):
 		'users' : curr_course.students
 	}
 
-	return render_template('users.html', course_id=course_id, **context)
+	return render_template('users.html', course_id=course_id, **context, course=curr_course)
 
 @app.route('/userpage')
 @login_required

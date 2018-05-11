@@ -221,18 +221,20 @@ def user(user_id):
 def coursesearch():
     form = CourseSearchForm()
 
-    if form.validate_on_submit():
+    if form.validate_on_submit() and form.options.data:
         try:
             addtousercourse = Course(course_name='{}'.format(form.options.data))
             course_to_add = Course.query.filter(Course.course_name == addtousercourse.course_name).first()
             user = User.query.filter_by(username=session['username']).first()
             course_to_add.students.append(user)
             db.session.commit()
+            flash('Course Added Successfully')
             return redirect(url_for('coursesearch'))
 
         except IntegrityError:
             db.session.rollback()
-            return redirect(url_for('userspage'))
+            flash('Course Already Added')
+            return redirect(url_for('coursesearch'))
 
     return render_template('coursesearch.html', form=form)
 
@@ -242,13 +244,14 @@ def coursesearch():
 def removecourse():
     form = CourseRemoveForm()
 
-    if form.validate_on_submit():
+    if form.validate_on_submit() and form.options.data:
         removecourse = Course(course_name='{}'.format(form.options.data))
         course_to_remove = Course.query.filter(Course.course_name == removecourse.course_name).first()
         user = User.query.filter_by(username=session['username']).first()
         course_to_remove.students.remove(user)
         db.session.commit()
-        return redirect(url_for('userspage'))
+        flash('Course Removed Successfully')
+        return redirect(url_for('removecourse'))
 
     return render_template('removecourse.html', form=form)
 

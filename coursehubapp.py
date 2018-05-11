@@ -19,7 +19,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Richard/Desktop/CourseHub/courseHub.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/rifatnoor/CourseHub/courseHub.db'
 
 bootstrap = Bootstrap(app)
 db = SQLAlchemy(app)
@@ -185,6 +185,17 @@ def course(course_id):
 
     return render_template('course.html', course_id=course_id, **context, course=curr_course)
 
+@app.route('/course/<course_id>/users', methods=['GET', 'POST'])
+@login_required
+def users(course_id):
+
+	curr_course = Course.query.filter(Course.id == course_id).first()
+
+	context = {
+		'users' : curr_course.students
+	}
+
+	return render_template('users.html', course_id=course_id, **context)
 
 @app.route('/userpage')
 @login_required
@@ -196,6 +207,14 @@ def userspage():
     }
     return render_template('userspage.html', **context)
 
+@app.route('/user/<user_id>')
+@login_required
+def user(user_id):
+    user = User.query.filter(User.id == user_id).first()
+    context = {
+        'course': Course.query.filter(Course.students.any(id=user.id)).all(),
+    }
+    return render_template('user.html', user_id=user_id, **context, user=user)
 
 @app.route('/coursesearch', methods=['GET', 'POST'])
 @login_required

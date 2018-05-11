@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+User's Page
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='userspage.css')}}">
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CourseHub</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="userscourses">
+      <div class="container">
+        <div class="starter-template">
+          <h1> {{user.username}} 's List Of Courses</h1>
+
+          </p>
+            
+        </div>
+      </div>
+
+      <div class = "courseSB">
+         {% for courses in course %}
+              <a name="usercourse" style="color:green; font-weight:bold; font-size:15px;" href="{{ url_for('course', course_id=courses.id)}}">{{ courses.course_name }}</a><br>
+            {% endfor %}
+      </div>
+        <a  href="{{ url_for('coursesearch') }}">
+          <input name="add" type="submit" value="Add Course"></input>
+        </a>
+        <a  href="{{ url_for('removecourse') }}">
+          <input name="remove" type="submit" value="Remove Course"></input>
+        </a>
+        <a href="{{url_for('usercenter',username = user.username, tag='post')}}">
+          <input name="usercenter" type="submit" value="Your Posts"></input>
+        </a>
+      </div>
+    </div>
+
+{% endblock %}

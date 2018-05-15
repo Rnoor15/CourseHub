@@ -42,8 +42,6 @@
     .comment-container{
         width: 70%;
         margin: 0 auto;
-        border: 1px solid grey;
-        border-radius: 8px;
     }
     .commentlist-container{
         width: 70%;
@@ -165,9 +163,10 @@
     <span class="count">{{ post.comment.count() }} Comments</span>
     <form action="{{url_for('comment', post_id=post.id)}}" method="POST">
         <div class="new-comment">
-            <textarea name="comment_detail" PLACEHOLDER="  comment"></textarea>
+            <textarea name="comment_detail" PLACEHOLDER="Comment"></textarea>
             <input name="post_id" type="hidden" value="{{ post.id }}" />
         </div>
+	<br>
         <div class="btn-send">
             <button class="btn btn-success">Submit</button> &nbsp
             <a href="{{ url_for('course', course_id=post.course.id) }}" class="btn btn-success">Back</a>

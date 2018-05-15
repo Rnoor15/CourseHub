@@ -24,7 +24,9 @@
     overflow-y:scroll;
     height: 300px;
 }
-
+.time{
+    width: 120px;
+}
 </style>
 </head>
 <body>
@@ -52,6 +54,7 @@
         <th>Comments</th>
         <th>Title</th>
         <th>Author</th>
+          <th class="time">Time</th>
       </tr>
     </thead>
     <tbody>
@@ -60,6 +63,7 @@
         <td>{{ posts.comment.count() }}</td>
 	<td><a href="{{url_for('detail',post_id = posts.id)}}"><font color="white">{{ posts.title }}</font></a></td>
         <td><a href="{{url_for('usercenter',username = posts.user.username, tag='post')}}"><font color="white">{{ posts.user.username }}</a></td>
+        <td>{{ posts.post_time.strftime('%Y-%m-%d %H:%M:%S') }}</td>
     </tr>
     {% endfor %}
   </table>

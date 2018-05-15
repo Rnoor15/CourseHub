@@ -12,20 +12,31 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <style>
-
+    h1{
+        text-align: center;
+    }
     .courseusers {
-      margin-top: 10px;
-      margin-left: 10px;
+        width: 500px;
+        margin: 0 auto;
     }
     
-    a {
-      color: black;
-      font-size: 20px;
+    .users a {
+         color: black;
+        font-size: 20px;
     }
 
-    .back {
-      margin-left: 30px;
+    .allusers{
+        width: 500px;
+        border: 1px solid grey;
+        padding: 0;
+        margin: 0;
     }
+    .users{
+
+        list-style: none;
+    }
+    .users:nth-of-type(even){
+        background: #d3edf3;}
   </style>
 </head>
 <body>
@@ -33,25 +44,27 @@
 <nav class="navbar navbar-expand-sm bg-success navbar-dark">
  <a class="navbar-brand" href="#">CourseHub</a>
   <ul class="navbar-nav ml-auto">
+         <li class="nav-item">
+                   <a class="nav-link" href="{{url_for('course', course_id=course.id) }}">Course</a>
+      </li>
 	<li class="nav-item">
                    <a class="nav-link" href="{{ url_for('logout') }}">Sign out</a>
                </li>
+
   </ul>
 </nav>
-
+   <br>
+    <h1>{{course.course_name}} Users</h1>
   <div class="courseusers">
 
-    <h1>{{course.course_name}} Users</h1>
-
-    <ul>
+<br>
+    <ul class="allusers">
       {% for user in users %} 
-      <li><a href={{ url_for('user', user_id = user.id) }}> {{user.username}} </a></li>
+      <li class="users"><a href={{ url_for('user', user_id = user.id) }}> {{user.username}} </a></li>
       {% endfor %}
     </ul>
 
     </div>
-    <div class="back">
-    <a href={{ url_for('course', course_id=course.id) }} class="btn btn-success">
-  Back to Course</a></div>
+
 </body>
 </html>
